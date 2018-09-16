@@ -35,7 +35,7 @@ let
     tiVersion = "7.1.0.GA";
   };
 in
-titaniumenv.titaniumsdk;
+titaniumenv.titaniumsdk
 ```
 and build it as follows:
 
