@@ -2,9 +2,9 @@
 , systems ? [ "x86_64-linux" "x86_64-darwin" ]
 , xcodeVersion ? "9.3"
 , xcodeBaseDir ? "/Applications/Xcode.app"
-, tiVersion ? "7.1.0.GA"
+, tiVersion ? "7.5.1.GA"
 , rename ? false
-, newBundleId ? "com.example.kitchensink", iosMobileProvisioningProfile ? null, iosCertificate ? null, iosCertificateName ? "Example", iosCertificatePassword ? "", iosVersion ? "11.3"
+, newBundleId ? "com.example.kitchensink", iosMobileProvisioningProfile ? null, iosCertificate ? null, iosCertificateName ? "Example", iosCertificatePassword ? "", iosVersion ? "12.1"
 , enableWirelessDistribution ? false, installURL ? null
 , useUpstream ? false
 }:
@@ -24,7 +24,7 @@ let
     };
 
   getXcodeEnv = pkgs:
-    if useUpstream then pkgs.xcodeenv else ../../nix-xcodeenvtests/xcodeenv {
+    if useUpstream then pkgs.xcodeenv else import ../../nix-xcodeenvtests/xcodeenv {
       inherit (pkgs) stdenv;
     };
 in
@@ -79,8 +79,7 @@ rec {
       target = "iphone";
     };
 
-  simulate_kitchensink =
-    import ./simulate-kitchensink {
+    simulate_kitchensink = import ./simulate-kitchensink {
       xcodeenv = getXcodeEnv pkgs;
       kitchensink = kitchensink_ios_development;
       bundleId = if rename then newBundleId else "com.appcelerator.kitchensink";

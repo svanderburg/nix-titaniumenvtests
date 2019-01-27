@@ -73,7 +73,7 @@ titaniumenv.buildApp {
   iosCertificateName = "My Company";
   iosCertificate = ./mycertificate.p12;
   iosCertificatePassword = "secret";
-  iosVersion = "11.3";
+  iosVersion = "12.1";
   iosBuildStore = false;
 
   enableWirelessDistribution = true;

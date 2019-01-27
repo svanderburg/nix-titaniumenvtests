@@ -29,6 +29,10 @@ titaniumenv.buildApp {
   name = "KitchenSink-${target}-${if release then "release" else "debug"}";
   src = if rename then renamedSrc else src;
 
+  preBuild = ''
+    sed -i -e "s|7.1.0.GA|7.5.1.GA|" tiapp.xml
+  '';
+
   inherit target release;
 
   androidKeyStore = ./keystore;
@@ -39,6 +43,6 @@ titaniumenv.buildApp {
   inherit enableWirelessDistribution installURL;
 
   androidsdkArgs = {
-    platformVersions = [ "25" "26" ];
+    platformVersions = [ "28" ];
   };
 }
