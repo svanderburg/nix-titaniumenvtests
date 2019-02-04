@@ -16,7 +16,7 @@ experimentation/testing purposes. All changes in this repository are supposed to
 Prerequisites
 =============
 * The [Nix package manager](http://nixos.org/nix) and
-  [Nixpkgs](http://nixos.org/nixpkgs]
+  [Nixpkgs](http://nixos.org/nixpkgs)
 * The [Nix Android build environment](http://github.com/svanderburg/nix-androidenvtests) to build Android apps
 * The [Nix iOS build environment](http://github.com/svanderburg/nix-xcodeenvtests) to build iOS apps
 
