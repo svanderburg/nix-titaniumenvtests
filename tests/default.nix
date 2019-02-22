@@ -1,5 +1,6 @@
 { nixpkgs ? <nixpkgs>
 , systems ? [ "x86_64-linux" "x86_64-darwin" ]
+, config ? { android_sdk.accept_license = true; }
 , xcodeVersion ? "9.3"
 , xcodeBaseDir ? "/Applications/Xcode.app"
 , tiVersion ? "7.5.1.GA"
@@ -10,8 +11,8 @@
 }:
 
 let
-  pkgs = import nixpkgs {};
-  pkgs_i686 = import nixpkgs { system = "i686-linux"; };
+  pkgs = import nixpkgs { inherit config; };
+  pkgs_i686 = import nixpkgs { system = "i686-linux"; inherit config; };
 
   getTitaniumEnv = pkgs:
     if useUpstream then pkgs.titaniumenv else import ../titaniumenv {
@@ -31,7 +32,7 @@ in
 rec {
   kitchensink_android_debug = pkgs.lib.genAttrs systems (system:
     let
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system config; };
     in
     import ./kitchensink {
       inherit (pkgs) fetchgit;
@@ -41,7 +42,7 @@ rec {
 
   kitchensink_android_release = pkgs.lib.genAttrs systems (system:
     let
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system config; };
     in
     import ./kitchensink {
       inherit (pkgs) fetchgit;
@@ -52,7 +53,7 @@ rec {
 
   emulate_kitchensink_debug = pkgs.lib.genAttrs systems (system:
     let
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system config; };
     in
     import ./emulate-kitchensink {
       androidenv = getAndroidEnv pkgs;
@@ -61,7 +62,7 @@ rec {
 
   emulate_kitchensink_release = pkgs.lib.genAttrs systems (system:
     let
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system config; };
     in
     import ./emulate-kitchensink {
       androidenv = getAndroidEnv pkgs;
@@ -69,7 +70,7 @@ rec {
     });
   } // (if builtins.elem "x86_64-darwin" systems then 
     let
-      pkgs = import nixpkgs { system = "x86_64-darwin"; };
+      pkgs = import nixpkgs { system = "x86_64-darwin"; inherit config; };
     in
     rec {
     kitchensink_ios_development = import ./kitchensink {
@@ -86,7 +87,7 @@ rec {
     };
 } else {}) // (if rename then
   let
-    pkgs = import nixpkgs { system = "x86_64-darwin"; };
+    pkgs = import nixpkgs { system = "x86_64-darwin"; inherit config; };
   in
   {
     kitchensink_ipa = import ./kitchensink {
