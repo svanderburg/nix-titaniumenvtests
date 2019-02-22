@@ -15,7 +15,7 @@ let
   pkgs_i686 = import nixpkgs { system = "i686-linux"; inherit config; };
 
   getTitaniumEnv = pkgs:
-    if useUpstream then pkgs.titaniumenv else import ../titaniumenv {
+    if useUpstream then pkgs.titaniumenv.override { inherit tiVersion; } else import ../titaniumenv {
       inherit pkgs pkgs_i686 tiVersion;
     };
 
