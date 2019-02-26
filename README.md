@@ -143,6 +143,11 @@ It is also possible to simulate the correspond iOS simulator build by using
 `xcodeenv.simulateApp {}` and emulate an Android APK by using
 `androidenv.emulateApp {}`.
 
+Test cases
+==========
+The `tests/` sub folder contains a collection of testcases that can be used
+to validate the Titanium build functionality.
+
 License
 =======
 The contents of this package is covered by the same license as Nixpkgs -- the
