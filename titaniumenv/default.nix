@@ -1,4 +1,4 @@
-{pkgs, pkgs_i686, tiVersion ? "7.1.0.GA"}:
+{pkgs, pkgs_i686, tiVersion ? "8.2.1.GA"}:
 
 rec {
   androidenv = import ../../nix-androidenvtests/androidenv {
@@ -12,6 +12,7 @@ rec {
   titaniumsdk = let
     titaniumSdkFile = if tiVersion == "7.1.0.GA" then ./titaniumsdk-7.1.nix
       else if tiVersion == "7.5.1.GA" then ./titaniumsdk-7.5.nix
+      else if tiVersion == "8.2.1.GA" then ./titaniumsdk-8.2.nix
       else throw "Titanium version not supported: "+tiVersion;
     in
     import titaniumSdkFile {
@@ -20,7 +21,7 @@ rec {
 
   buildApp = import ./build-app.nix {
     inherit (pkgs) stdenv python which file jdk nodejs;
-    inherit (pkgs.nodePackages_8_x) alloy titanium;
+    inherit (pkgs.nodePackages_10_x) alloy titanium;
     inherit (androidenv) composeAndroidPackages;
     inherit (xcodeenv) composeXcodeWrapper;
     inherit titaniumsdk;

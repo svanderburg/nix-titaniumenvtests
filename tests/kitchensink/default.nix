@@ -8,8 +8,8 @@ assert rename -> (stdenv != null && newBundleId != null && iosMobileProvisioning
 let
   src = fetchgit {
     url = https://github.com/appcelerator/kitchensink-v2.git;
-    rev = "94364df2ef60a80bd354a4273e3cb5f4c5185537";
-    sha256 = "0q4gzidpsq401frkngy4yk5kqvm8dz00ls74bw3fnpvg4714d6gf";
+    rev = "b931e4e993a67367fe6ec51ec9a73e7dd807bd54";
+    sha256 = "1x2hlc4vgkc2xj7pai61avp4x3m1lsq8zyww9lswmns1v51qyixs";
   };
 
   # Rename the bundle id to something else
@@ -30,7 +30,7 @@ titaniumenv.buildApp {
   src = if rename then renamedSrc else src;
 
   preBuild = ''
-    sed -i -e "s|7.1.0.GA|7.5.1.GA|" tiapp.xml
+    sed -i -e "s|8.2.0.GA|8.2.1.GA|" tiapp.xml
   '';
 
   inherit target release;

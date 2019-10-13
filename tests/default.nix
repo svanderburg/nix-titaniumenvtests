@@ -1,11 +1,11 @@
 { nixpkgs ? <nixpkgs>
 , systems ? [ "x86_64-linux" "x86_64-darwin" ]
 , config ? { android_sdk.accept_license = true; }
-, xcodeVersion ? "9.3"
+, xcodeVersion ? "11.1"
 , xcodeBaseDir ? "/Applications/Xcode.app"
-, tiVersion ? "7.5.1.GA"
+, tiVersion ? "8.2.1.GA"
 , rename ? false
-, newBundleId ? "com.example.kitchensink", iosMobileProvisioningProfile ? null, iosCertificate ? null, iosCertificateName ? "Example", iosCertificatePassword ? "", iosVersion ? "12.1"
+, newBundleId ? "com.example.kitchensink", iosMobileProvisioningProfile ? null, iosCertificate ? null, iosCertificateName ? "Example", iosCertificatePassword ? "", iosVersion ? "13.1"
 , enableWirelessDistribution ? false, installURL ? null
 , useUpstream ? false
 }:
