@@ -6,6 +6,6 @@ androidenv.emulateApp {
   platformVersion = "23";
   package = "com.appcelerator.kitchensink";
   activity = ".KitchensinkActivity";
-  systemImageType = "default";
-  abiVersion = "x86";
+  systemImageType = "google_apis";
+  abiVersion = "armeabi-v7a";
 }
