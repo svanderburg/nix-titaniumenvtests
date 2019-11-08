@@ -55,12 +55,12 @@ in
 stdenv.mkDerivation {
   name = "mobilesdk-8.2.1.GA";
   src = if (stdenv.system == "i686-linux" || stdenv.system == "x86_64-linux") then fetchurl {
-    url = https://builds.appcelerator.com/mobile/8_2_X/mobilesdk-8.2.1.v20191010112656-linux.zip;
-    sha256 = "0qi5sznw2smnx7ckmn7rjcdwwh453q7cj0d1fdvcwwj4azqyjzn8";
+    url = https://builds.appcelerator.com/mobile/8_2_X/mobilesdk-8.2.1.v20191025070136-linux.zip;
+    sha256 = "1nvcmm6cby6bmwdiacq46n5y4zjpz9qlipakvglw27j3p4rbmkwl";
   }
   else if stdenv.system == "x86_64-darwin" then fetchurl {
-    url = https://builds.appcelerator.com/mobile/8_2_X/mobilesdk-8.2.1.v20191010112656-osx.zip;
-    sha256 = "1r5jyjpf6y8p651nmfmf5gpkzwfpj7k022s03f76nzjiin6xvw81";
+    url = https://builds.appcelerator.com/mobile/8_2_X/mobilesdk-8.2.1.v20191025070136-osx.zip;
+    sha256 = "1nxwmyw3vqc5wghj38kpksisy0i808x0x3pa8w3p290w709g311l";
   }
   else throw "Platform: ${stdenv.system} not supported!";
 
