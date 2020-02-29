@@ -3,7 +3,7 @@
 , config ? { android_sdk.accept_license = true; }
 , xcodeVersion ? "11.1"
 , xcodeBaseDir ? "/Applications/Xcode.app"
-, tiVersion ? "8.2.1.GA"
+, tiVersion ? "8.3.2.GA"
 , rename ? false
 , newBundleId ? "com.example.kitchensink", iosMobileProvisioningProfile ? null, iosCertificate ? null, iosCertificateName ? "Example", iosCertificatePassword ? "", iosVersion ? "13.1"
 , enableWirelessDistribution ? false, installURL ? null

@@ -30,7 +30,7 @@ titaniumenv.buildApp {
   src = if rename then renamedSrc else src;
 
   preBuild = ''
-    sed -i -e "s|8.2.0.GA|8.2.1.GA|" tiapp.xml
+    sed -i -e "s|8.2.0.GA|8.3.2.GA|" tiapp.xml
   '';
 
   inherit target release;
@@ -43,6 +43,6 @@ titaniumenv.buildApp {
   inherit enableWirelessDistribution installURL;
 
   androidsdkArgs = {
-    platformVersions = [ "28" ];
+    platformVersions = [ "29" ];
   };
 }
